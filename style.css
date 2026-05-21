@@ -1,0 +1,186 @@
+/* --- ASALET & LÜKS TEMASI ÖZEL RENK PALETİ --- */
+
+.padding-responsive {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+@media (min-width: 768px) {
+    .padding-responsive {
+        padding-left: 8%;
+        padding-right: 8%;
+    }
+}
+
+/* --- INTRO OVERLAY (Bordo & Derin Okyanus Geçişi) --- */
+#intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Derin okyanus laciverti ve asil bordo geçişi */
+    background: linear-gradient(135deg, #0f2b46, #4a0e17, #6b0f24);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    animation: fadeOut 1.2s ease forwards 2.5s; 
+    pointer-events: none; 
+}
+
+/* --- MASAÜSTÜ GRİD SİSTEMİ (Sabit 5'li) --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 20px;
+}
+
+/* --- PREMIUM MASAÜSTÜ KART AYARLARI --- */
+.product-card {
+    background: white; /* Kartın kendisini beyaz yaptık ki görseller patlasın */
+    border-radius: 16px;
+    overflow: hidden;
+    padding: 12px;
+    border: 2px solid #e2e8f0; /* İlk başta hafif şık gri çerçeve */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    border-color: #6b0f24; /* Hover olunca asil bordo çerçeve parlar */
+    box-shadow: 0 10px 25px rgba(107, 15, 36, 0.1);
+}
+
+.product-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.product-card div {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.product-card h3 {
+    color: #0f2b46; /* Ürün isimleri derin okyanus laciverti */
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.product-card p {
+    color: #6b0f24; /* Fiyatlar asil bordo */
+    font-weight: 900;
+    margin-top: 4px;
+}
+
+/* Kategori Filtre Butonları */
+.filter-btn {
+    background-color: white;
+    border: 2px solid #0f2b46;
+    padding: 10px 22px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 700;
+    color: #0f2b46;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background-color: #0f2b46;
+    color: white;
+    box-shadow: 0 5px 15px rgba(15, 43, 70, 0.2);
+}
+
+
+/* --- TAM MOBİL UYUMLULUK (CANDLE STİLİ: YAN YANA 3'LÜ TAM KARE VİTRİN) --- */
+@media (max-width: 600px) {
+    
+    .scrollbar-none::-webkit-scrollbar {
+        display: none;
+    }
+
+    .filter-btn {
+        flex: 0 0 auto;
+        padding: 8px 14px;
+        font-size: 0.8rem;
+    }
+
+    /* MOBİLDE İNATLA YAN YANA 3'LÜ GRID */
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 6px !important;
+        margin-top: 10px;
+    }
+
+    /* Kartın Çerçeveli ve Kusursuz Bir Şekilde Tam Kare Kalması */
+    .product-card {
+        background: white !important;
+        padding: 4px !important;
+        border-radius: 12px !important;
+        border: 2px solid #0f2b46 !important; /* İstediğin o asil 2px okyanus laciveti çerçevesi mobilde aktif! */
+        aspect-ratio: 1 / 1 !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        overflow: hidden !important;
+    }
+
+    /* Fotoğrafın Kare Kart İçindeki Dengesi */
+    .product-card img {
+        width: 100% !important;
+        height: 65% !important; 
+        object-fit: cover !important;
+        border-radius: 8px !important;
+        aspect-ratio: auto !important;
+    }
+
+    /* Kartın Altındaki Yazı Alanı */
+    .product-card div {
+        margin-top: 2px !important;
+        padding: 0 2px !important;
+        height: 30% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+    }
+
+    /* Yazıların Taşmasını Önleyen Mikro Filtreler */
+    .product-card h3 {
+        color: #0f2b46 !important;
+        font-size: 0.65rem !important;
+        line-height: 1.1 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .product-card p {
+        color: #6b0f24 !important;
+        font-size: 0.65rem !important;
+        margin-top: 1px !important;
+    }
+}
+
+/* Animasyon Temelleri */
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-blink {
+    animation: blinkCursor 0.75s step-end infinite;
+}
+
+@keyframes blinkCursor {
+    from, to { border-color: transparent }
+    50% { border-color: #dfb76c; }
+}
