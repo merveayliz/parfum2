@@ -1,4 +1,3 @@
-// --- GLOBAL PERFUME PRODUCTS DATA ---
 const products = [
     { id: 1, name: "Velvet Rose & Oud", category: "floral", desc: "A rich, sweet aura of dark Damascus rose wrapped in smoky oud wood and sweet praline notes.", price: "$85.00", img: "img/1.jpg" },
     { id: 2, name: "Mystic Sandalwood", category: "woody", desc: "An exotic, creamy blend of premium sandalwood, warm amber, and hints of spiced cardamom.", price: "$90.00", img: "img/2.jpg" },
@@ -30,7 +29,6 @@ const modalPrice = document.getElementById('modalPrice');
 const modalWA = document.getElementById('modalWhatsApp');
 const closeModal = document.querySelector('.close-modal');
 
-// Ürünleri Dinamik Yükleme Fonksiyonu
 function loadProducts(filteredProducts = products) {
     productList.innerHTML = ""; 
     filteredProducts.forEach(product => {
@@ -47,30 +45,25 @@ function loadProducts(filteredProducts = products) {
         productList.appendChild(card);
     });
 }
-// Pop-up Modal Açılış Fonksiyonu
+
 function openModal(product) {
     modalImg.src = product.img;
     modalName.innerText = product.name;
     modalDesc.innerText = product.desc;
     modalPrice.innerText = product.price;
 
-    // WhatsApp Sipariş Mesajı
     const message = `Hello! I saw "${product.name}" (${product.price}) on your luxury perfume store. I would love to get information about shipping and complete my order!`;
     modalWA.href = `https://wa.me/905xxxxxxxxx?text=${encodeURIComponent(message)}`; 
 
-    // Tailwind'in hidden sınıfını kaldırıp görünür yapıyoruz
     modal.classList.remove('hidden');
     document.body.style.overflow = "hidden"; 
 }
 
-// Modalı Kapatma
 closeModal.onclick = () => {
-    // Kapatırken tekrar hidden sınıfını ekliyoruz
     modal.classList.add('hidden');
     document.body.style.overflow = "auto";
 }
 
-// Filtreleme Algoritması
 function filterProducts(category) {
     const buttons = document.querySelectorAll('.filter-btn');
     buttons.forEach(btn => btn.classList.remove('active'));
@@ -87,12 +80,11 @@ function filterProducts(category) {
     }
 }
 
-// Sayfa ilk yüklendiğinde tetiklenecek alan
 window.onload = () => {
     loadProducts();
 };
 
-// --- OTOMATİK DAKTİLO EFEKTİ ---
+
 document.addEventListener("DOMContentLoaded", () => {
     const introText = document.querySelector('.intro-text');
     
